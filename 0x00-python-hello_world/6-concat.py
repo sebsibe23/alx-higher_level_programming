@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-strinstitution = "Holberton"
-strbranch = "School"
-strinstitution += " " + strbranch
-print("Welcome to {}!".format(strinstitution))
+str1 = "Holberton"
+str2 = "School"
+str1 += " " + str2
+print(f"Welcome to {str1}!")
