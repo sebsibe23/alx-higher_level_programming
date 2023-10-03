@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 import random
-strnumber = random.randint(-10000, 10000)
-last_digit = abs(strnumber) % 10
-print("Last digit of", strnumber, "is", last_digit, end=" ")
+strnumber_ = random.randint(-10000, 10000)
+last_digit = strnumber_ % 10
+print("Last digit of", strnumber_, "is", last_digit, end=" ")
 if last_digit > 5:
     print("and is greater than 5")
 elif last_digit == 0:
