@@ -3,6 +3,7 @@
 if __name__ == "__main__":
     from add_0 import add
 
-    intw = 1
-    inte = 2
-    print("{} + {} = {}".format(intw, inte, add(intw, inte)))
+    a = 1
+    b = 2
+    print("{} + {} = {}".format(a, b, add(a, b)))
+
