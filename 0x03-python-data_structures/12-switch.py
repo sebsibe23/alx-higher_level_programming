@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-stra = 89
-strb = 10
-stra, strb = strb, stra
-print("a={:d} - b={:d}".format(stra, strb))
+a = 89
+b = 10
+a, b = b, a
+print("a={:d} - b={:d}".format(a, b))
