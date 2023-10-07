@@ -2,16 +2,17 @@
 # 7-add_tuple.py
 
 
-def add_tuple(firstelement=(), secondelement=()):
-    if len(firstelement) < 2:
-        if len(firstelement) == 0:
-            firstelement = 0, 0
+def add_tuple(fnum=(), snum=()):
+    """Add two int num."""
+    if len(fnum) < 2:
+        if len(fnum) == 0:
+            fnum = 0, 0
         else:
-            firstelement = firstelement[0], 0
-    if len(secondelement) < 2:
-        if len(secondelement) == 0:
-            secondelement = 0, 0
+            fnum = fnum[0], 0
+    if len(snum) < 2:
+        if len(snum) == 0:
+            snum = 0, 0
         else:
-            secondelement = secondelement[0], 0
+            snum = snum[0], 0
 
-    return (firstelement[0] + secondelement[0], firstelement[1] + secondelement[1])
+    return (fnum[0] + snum[0], fnum[1] + snum[1])
