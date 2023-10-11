@@ -8,10 +8,10 @@
  * @p: Python Object
  * Return: no return
  */
-void display_python_bytes(PyObject *p)
+void print_python_bytes(PyObject *p)
 {
-	char *var_byte_str;
-	long int varbyte_size, varindex_, var_max_lim;
+	char *string;
+	long int size, i, limit;
 
 	printf("[.] bytes object info\n");
 	if (!PyBytes_Check(p))
@@ -20,24 +20,24 @@ void display_python_bytes(PyObject *p)
 		return;
 	}
 
-	varbyte_size = ((PyVarObject *)(p))->ob_size;
-	var_byte_str = ((PyBytesObject *)p)->ob_sval;
+	size = ((PyVarObject *)(p))->ob_size;
+	string = ((PyBytesObject *)p)->ob_sval;
 
-	printf("  size: %ld\n", varbyte_size);
-	printf("  trying string: %s\n", var_byte_str);
+	printf("  size: %ld\n", size);
+	printf("  trying string: %s\n", string);
 
-	if (varbyte_size >= 10)
-		var_max_lim = 10;
+	if (size >= 10)
+		limit = 10;
 	else
-		var_max_lim = varbyte_size + 1;
+		limit = size + 1;
 
-	printf("  first %ld bytes:", var_max_lim);
+	printf("  first %ld bytes:", limit);
 
-	for (varindex_ = 0; varindex_ < var_max_lim; varindex_++)
-		if (var_byte_str[varindex_] >= 0)
-			printf(" %02x", var_byte_str[varindex_]);
+	for (i = 0; i < limit; i++)
+		if (string[i] >= 0)
+			printf(" %02x", string[i]);
 		else
-			printf(" %02x", 256 + var_byte_str[varindex_]);
+			printf(" %02x", 256 + string[i]);
 
 	printf("\n");
 }
@@ -48,25 +48,25 @@ void display_python_bytes(PyObject *p)
  * @p: Python Object
  * Return: no return
  */
-void display_python_list(PyObject *p)
+void print_python_list(PyObject *p)
 {
-	long int list_size, varindex_;
-	PyListObject *py_list;
-	PyObject *item;
+	long int size, i;
+	PyListObject *list;
+	PyObject *obj;
 
-	list_size = ((PyVarObject *)(p))->ob_size;
-	py_list = (PyListObject *)p;
+	size = ((PyVarObject *)(p))->ob_size;
+	list = (PyListObject *)p;
 
 	printf("[*] Python list info\n");
-	printf("[*] Size of the Python List = %ld\n", list_size);
-	printf("[*] Allocated = %ld\n", py_list->allocated);
+	printf("[*] Size of the Python List = %ld\n", size);
+	printf("[*] Allocated = %ld\n", list->allocated);
 
-	for (varindex_ = 0; varindex_ < list_size; varindex_++)
+	for (i = 0; i < size; i++)
 	{
-		item = ((PyListObject *)p)->ob_item[varindex_];
-		printf("Element %ld: %s\n", varindex_, ((item)->ob_type)->tp_name);
-		if (PyBytes_Check(item))
-			display_python_bytes(item);
+		obj = ((PyListObject *)p)->ob_item[i];
+		printf("Element %ld: %s\n", i, ((obj)->ob_type)->tp_name);
+		if (PyBytes_Check(obj))
+			print_python_bytes(obj);
 	}
 }
 
