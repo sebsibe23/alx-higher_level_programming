@@ -12,7 +12,8 @@ def safe_print_list_integers(my_list=[], x=0):
     - x (int): The range up to which
     elements are to be printed from the list.
     Returns:
-    - num_printed (int): The count of successfully printed elements from the list.
+    - num_printed (int): The count of successfully printed elements 
+    from the list.
     """
     f = 0
     varprinted = 0
