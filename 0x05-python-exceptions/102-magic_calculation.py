@@ -1,41 +1,32 @@
 #!/usr/bin/python3
+
 def magic_calculation(a, b):
-    """
-    magical_computation
-        a function performs the "magical" computation on two numbers.
-        It first initializes the result variable to 0.
-        Then it runs the loop from 1 to 2,
-        and for each iteration, if a current index is greater than a,
-        it raises an exception.
-        If not, it adds a integer division of a power b
-        and the current index to the result.
-        If an exception occurs, it simply passes
-        and continues to the next line.
-        Finally, it adds a and b to the
-        result and returns it.
+    '''
+    Function Name: magic_calculation
+    This function performs calculations between
+    two integers 'a' and 'b'.
+    It iterates over a range of 1 to 3. If the
+    iterator is greater than 'a',
+    it raises an exception and sets the result
+    as the sum of 'a' and 'b'.
+    Otherwise, it adds the result of '(a^b)/i' to the result.
     Parameters:
-        a: The first integer number.
-        b: The second integer number.
-
-    Description:
-
-
+    a (int): The first integer input to the function.
+    b (int): The second integer input to the function.
     Returns:
-        The result of the computation.
-    """
-    error_message = 'Too far'
-    l_range = range(1, 3)
-    add_result = b + a
-    calc_result = a ** b / i
+    varresult (float): If an error occurs, it returns the
+    addition of integers 'a' and 'b'.
+                    Otherwise, it returns the desired result.
+    '''
 
-    result = 0
-    for i in l_range:
+    varresult = 0
+    for f in range(1, 3):
         try:
-            if i > a:
-                raise Exception(error_message)
+            if f > a:
+                raise Exception('Too far')
             else:
-                result += calc_result
+                varresult += a ** b / f
         except Exception:
-            result = add_result
+            varresult = b + a
             break
-    return (result)
+    return (varresult)
