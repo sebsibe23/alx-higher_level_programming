@@ -23,7 +23,7 @@ def magic_calculation(a, b):
     Returns:
         The result of the computation.
     """
-     varresult = 0
+    varresult = 0
     for r in range(1, 3):
         try:
             if r > a:
