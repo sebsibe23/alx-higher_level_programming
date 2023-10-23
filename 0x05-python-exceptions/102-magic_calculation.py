@@ -23,14 +23,15 @@ def magic_calculation(a, b):
     Returns:
         The result of the computation.
     """
+     varresult = 0
+    for r in range(1, 3):
+        try:
+            if r > a:
+                raise Exception('Too far')
+            else:
+                varresult += a ** b / r
+        except Exception:
+            varresult = b + a
+            break
+    return (varresult)
 
-    var_comp_result = 0
-    try:
-        for index in range(1, 3):
-            if index > a:
-                raise Exception("Too far")
-            var_comp_result += (a ** b) // index
-    except Exception:
-        pass
-    var_comp_result += b + a
-    return var_comp_result
