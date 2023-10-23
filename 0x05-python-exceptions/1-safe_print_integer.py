@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 def safe_print_integer(value):
     """
     a function prints the value as an integer with "{:d}".format().
