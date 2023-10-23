@@ -14,19 +14,13 @@ def safe_print_list_integers(my_list=[], x=0):
     Returns:
     - num_printed (int): The count of successfully printed elements from the list.
     """
-
-    varindex = 0
-    numprinted = 0
-    varseparator = ""
-
-    for varindex in range(0, x):
+    f = 0
+    varprinted = 0
+    for f in range(0, x):
         try:
-            print(f"{varseparator}{my_list[varindex]}", end="")
-            varseparator = ""
-            numprinted += 1
+            print("{:d}".format(my_list[f]), end="")
+            varprinted += 1
         except (ValueError, TypeError):
             continue
-
     print()
-
-    return numprinted
+    return varprinted
