@@ -3,14 +3,14 @@
 
 
 class Square:
-      """
+  """
   Class that represents a square shape.
 
   Attributes:
     size: The length of one side of the square.
   """
   def __init__(self, size=0):
-        """
+    """
     Creates a new square object.
 
     Args:
@@ -19,7 +19,7 @@ class Square:
     self.size = size
 
   def area(self):
-        """
+    """
     Calculates the area of the square.
 
     Returns:
@@ -29,7 +29,7 @@ class Square:
 
   @property
   def size(self):
-        """
+    """
     Gets the length of one side of the square.
 
     Returns:
@@ -39,7 +39,7 @@ class Square:
 
   @size.setter
   def size(self, value):
-        """
+    """
     Sets the length of one side of the square.
 
     Args:
@@ -50,8 +50,8 @@ class Square:
       ValueError: If the new size is negative.
     """
     if not isinstance(value, int):
-          raise TypeError("size must be an integer")
+      raise TypeError("size must be an integer")
     elif value < 0:
-          raise ValueError("size must be >= 0")
+      raise ValueError("size must be >= 0")
     else:
-          self.__size = value
+      self.__size = value
