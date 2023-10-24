@@ -2,56 +2,56 @@
 """Defines a class Square"""
 
 
-
 class Square:
-    """
-    Class Name: Square
-    Attributes:
-    - size: size of a square (1 side).
+      """
+  Class that represents a square shape.
 
-    This class defines properties of a square.
-    """
+  Attributes:
+    size: The length of one side of the square.
+  """
+  def __init__(self, size=0):
+        """
+    Creates a new square object.
 
-    def __init__(self, size=0):
-        """
-        Function Name: __init__
-        Parameters:
-        - size: size of the square (1 side).
+    Args:
+      size: The length of one side of the square.
+    """
+    self.size = size
 
-        This function creates new instances of square.
-        """
-        self.__size = size
+  def area(self):
+        """
+    Calculates the area of the square.
 
-    def area(self):
-        """
-        Function Name: area
+    Returns:
+      The area of the square, in square units.
+    """
+    return self.size ** 2
 
-        This function calculates the area of square and returns it.
-        """
-        return self.__size ** 2
+  @property
+  def size(self):
+        """
+    Gets the length of one side of the square.
 
-    @property
-    def size(self):
-        """
-        Function Name: size
+    Returns:
+      The length of one side of the square, in units.
+    """
+    return self.__size
 
-        This function returns the size of a square.
-        """
-        return self.__size
+  @size.setter
+  def size(self, value):
+        """
+    Sets the length of one side of the square.
 
-    @size.setter
-    def size(self, value):
-        """
-        Function Name: size
-        Parameters:
-        - value: new size of a square (1 side).
+    Args:
+      value: The new length of one side of the square, in units.
 
-        This function sets the size of a square.
-        """
-        if not isinstance(value, int):
-            raise TypeError("size must be an integer")
-        elif value < 0:
-            raise ValueError("size must be >= 0")
-        else:
-            self.__size = value
-
+    Raises:
+      TypeError: If the new size is not an integer.
+      ValueError: If the new size is negative.
+    """
+    if not isinstance(value, int):
+          raise TypeError("size must be an integer")
+    elif value < 0:
+          raise ValueError("size must be >= 0")
+    else:
+          self.__size = value
