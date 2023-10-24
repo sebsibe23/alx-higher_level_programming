@@ -80,7 +80,7 @@ class Square:
     def my_print(self):
         """Prints a visual representation of the square with the '#' character.
 
-        If the size is 0, it prints an empty line. It also takes into account 
+        If the size is 0, it prints an empty line. It also takes into account
         the position attribute to shift the square to the right and downwards.
         """
         if self.__size == 0:
