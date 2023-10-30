@@ -1,9 +1,10 @@
 #!/usr/bin/python3
-"""0-rectangle.
+"""Module 0-rectangle, built for a Python project.
 """
 
-
 class Rectangle:
-    """This is a placeholder text for an empty class that will be used for a programming task. The class name and the methods are not defined yet, but they will be added in the subsequent tasks. The purpose of this text is to demonstrate the codeblock syntax and to provide some guidance for the task instructions. The text should be clear, concise and professional..
+    """This is an empty class named Rectangle. 
+    It doesn't contain any attributes or methods yet, but it can be expanded upon in future tasks.
     """
     pass
+
