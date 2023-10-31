@@ -4,7 +4,7 @@
 
 class LockedClass:
     """
-    This class prevents the user from dynamicallycreating new instance attributes
+    This class prevents the user from dynamically
     for anything but attributes called 'first_name'.
     """
 
