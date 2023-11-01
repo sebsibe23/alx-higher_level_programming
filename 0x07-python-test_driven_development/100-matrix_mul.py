@@ -1,39 +1,66 @@
 #!/usr/bin/python3
-def matrix_mul(mat_a, mat_b):
-    # Check if mat_a and mat_b are lists
-    if not isinstance(mat_a, list):
-        raise TypeError("mat_a must be a list")
-    if not isinstance(mat_b, list):
-        raise TypeError("mat_b must be a list")
+"""Defines a function that performs the multiplication of two matrices.
 
-    # Check if mat_a and mat_b are lists of lists
-    if not all(isinstance(row, list) for row in mat_a):
-        raise TypeError("mat_a must be a list of lists")
-    if not all(isinstance(row, list) for row in mat_b):
-        raise TypeError("mat_b must be a list of lists")
+Attributes:
+    m_a (list of lists): The first matrix.
+    m_b (list of lists): The second matrix.
+"""
 
-    # Check if mat_a and mat_b are not empty
-    if mat_a == [] or mat_a == [[]]:
-        raise ValueError("mat_a can't be empty")
-    if mat_b == [] or mat_b == [[]]:
-        raise ValueError("mat_b can't be empty")
+def matrix_mul(m_a, m_b):
+    """Performs multiplication of two matrices.
 
-    # Check if all elements in the matrices are integers or floats
-    if not all(isinstance(element, (int, float)) for row in mat_a for element in row):
-        raise TypeError("mat_a should contain only integers or floats")
-    if not all(isinstance(element, (int, float)) for row in mat_b for element in row):
-        raise TypeError("mat_b should contain only integers or floats")
+    Args:
+        m_a (list of lists): The first matrix.
+        m_b (list of lists): The second matrix.
 
-    # Check if all rows in each matrix are of the same size
-    if not len(set(len(row) for row in mat_a)) <= 1:
-        raise TypeError("each row of mat_a must be of the same size")
-    if not len(set(len(row) for row in mat_b)) <= 1:
-        raise TypeError("each row of mat_b must be of the same size")
+    Raises:
+        TypeError: If m_a or m_b is not a list or not a list of lists.
+        TypeError: If an element of the matrices is not an integer or a float.
+        ValueError: If m_a or m_b is empty.
+        TypeError: If m_a or m_b is not rectangular (all rows must be of the same size).
+        ValueError: If m_a and m_b can't be multiplied.
 
-    # Check if the number of columns in the first matrix is equal to the number of rows in the second matrix
-    if len(mat_a[0]) != len(mat_b):
-        raise ValueError("mat_a and mat_b can't be multiplied")
+    Returns:
+        list of lists: The product of the two matrices.
+    """
+    error_messages = {
+        "lists": "{} must be a list of lists",
+        "empty": "{} can't be empty",
+        "type": "{} should contain only integers or floats",
+        "size": "each row of {} must be of the same size",
+        "value": "{} and {} can't be multiplied"
+    }
 
-    # Perform matrix multiplication
-    return [[sum(a * b for a, b in zip(row_a, col_b)) for col_b in zip(*mat_b)] for row_a in mat_a]
+    def check_matrix(matrix, name):
+        if not isinstance(matrix, list):
+            raise TypeError("{} must be a list".format(name))
+        
+        for row in matrix:
+            if not isinstance(row, list):
+                raise TypeError(error_messages["lists"].format(name))
+            
+            for item in row:
+                if not isinstance(item, (int, float)):
+                    raise TypeError(error_messages["type"].format(name))
+        
+        if len(matrix) == 0 or len(matrix[0]) == 0:
+            raise ValueError(error_messages["empty"].format(name))
+        
+        if len(set(len(row) for row in matrix)) > 1:
+            raise TypeError(error_messages["size"].format(name))
+
+    check_matrix(m_a, 'm_a')
+    check_matrix(m_b, 'm_b')
+
+    if len(m_a[0]) != len(m_b):
+        raise ValueError(error_messages["value"].format('m_a', 'm_b'))
+
+    new_matrix = [[0 for _ in range(len(m_b[0]))] for _ in range(len(m_a))]
+    
+    for i in range(len(m_a)):
+        for j in range(len(m_b[0])):
+            for k in range(len(m_b)):
+                new_matrix[i][j] += m_a[i][k] * m_b[k][j]
+
+    return new_matrix
 
