@@ -1,22 +1,5 @@
 #!/usr/bin/python3
-
 def matrix_mul(mat_a, mat_b):
-    """
-    Multiplies two matrices.
-
-    Parameters:
-    mat_a (list of list of int/float): The first matrix.
-    mat_b (list of list of int/float): The second matrix.
-
-    Returns:
-    list of list of int/float: The product of the two matrices.
-
-    This function takes two matrices, mat_a and mat_b, as input and returns their product.
-    Both matrices should be non-empty and contain only integers or floats. Each row in each matrix should be of the same size.
-    The number of columns in the first matrix should be equal to the number of rows in the second matrix.
-    If these conditions are not met, the function raises an appropriate error.
-    """
-
     # Check if mat_a and mat_b are lists
     if not isinstance(mat_a, list):
         raise TypeError("mat_a must be a list")
