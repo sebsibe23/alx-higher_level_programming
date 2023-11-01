@@ -1,11 +1,6 @@
-================================================================================================================================
-This document explains how to use the 100-matrix_mul.py script, which performs matrix multiplication on two matrices of any size
-================================================================================================================================
-============================
-How to Use 100-matrix_mul.py
-============================
-This module defines a matrix multiplication function ``matrix_mul(m_a, m_b)``.
-
+==============================================================
+This document explains how to use the 100-matrix_mul.py script
+==============================================================
 Usage
 =====
 ``matrix_mul(...)`` returns a new matrix representing the multiplication of
