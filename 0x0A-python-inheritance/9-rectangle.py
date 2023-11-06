@@ -3,6 +3,7 @@
 
 BaseGeometry = __import__('7-base_geometry').BaseGeometry
 
+
 class Rectangle(BaseGeometry):
     """
     Represent a rectangle using BaseGeometry.
@@ -48,5 +49,3 @@ class Rectangle(BaseGeometry):
         varstring = "[" + str(self.__class__.__name__) + "] "
         varstring += str(self.__width) + "/" + str(self.__height)
         return varstring
-
-

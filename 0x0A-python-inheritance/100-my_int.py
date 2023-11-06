@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Defines a class MyInt that inherits from int."""
 
+
 class MyInt(int):
     """
     Invert int operators == and !=.
@@ -32,4 +33,3 @@ class MyInt(int):
             bool: True if self and value are equal, False otherwise.
         """
         return self.real == value
-
