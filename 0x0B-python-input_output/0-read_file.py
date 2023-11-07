@@ -14,5 +14,5 @@ def read_file(filename=""):
     This function doesn't handle file permission or
     file doesn't exist exceptions.
     """
-    with open(filename, 'r', encoding='utf-8') as varfilename:
-        print(varfilename.read())
+    with open(filename, encoding='utf-8') as fname:
+        print(fname.read(), end="")
