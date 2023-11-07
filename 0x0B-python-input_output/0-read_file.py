@@ -1,6 +1,4 @@
 #!/usr/bin/python3
-
-
 def read_file(filename=""):
     """
     Function Name: read_file
@@ -14,5 +12,6 @@ def read_file(filename=""):
     This function doesn't handle file permission or
     file doesn't exist exceptions.
     """
+
     with open(filename, encoding='utf-8') as fname:
         print(fname.read(), end="")
