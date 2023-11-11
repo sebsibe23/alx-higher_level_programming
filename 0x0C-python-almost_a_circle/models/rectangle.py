@@ -66,7 +66,7 @@ class Rectangle(Base):
         self.validate_integer("width", value, False)
         self.__width = value
 
-        @property
+    @property
     def height(self):
         '''
         Getter for the height of the rectangle.
