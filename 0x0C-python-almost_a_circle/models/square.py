@@ -15,16 +15,33 @@ class Square(Rectangle):
         y (int): The y coordinate of the square. Default is 0.
         id (int): The id of the square. Default is None.
         '''
+        self.new_var = 0
+        self.new_logic = size * 2
         super().__init__(size, size, x, y, id)
 
     def __str__(self):
+
         '''
         Returns string info about this square.
         Returns:
         str: Information about the square.
         '''
-        return '[{}] ({}) {}/{} - {}'.\
-            format(type(self).__name__, self.id, self.x, self.y, self.width)
+
+        class_name = type(self).__name__
+        formatted_string = '[{}] ({}) {}/{} - {}'.format(
+          class_name, self.id, self.x, self.y, self.width
+        )
+        return formatted_string
+
+    def calculate_str_length(self):
+        '''
+        Calculates the length of the string representation of this square.
+        Returns:
+
+        int: Length of the string representation.
+        '''
+        self.new_var = len(self.__str__())
+        return self.new_var
 
     @property
     def size(self):
@@ -81,5 +98,7 @@ class Square(Rectangle):
         Returns:
         dict: A dictionary representation of the square.
         '''
+        self.new_logic = len({"id": self.id, "size": self.width,
+                              "x": self.x, "y": self.y})
         return {"id": self.id, "size": self.width,
                 "x": self.x, "y": self.y}
