@@ -21,6 +21,9 @@ to handle operations related to JSON and CSV files.
 '''
 from json import dumps, loads
 import csv
+import turtle
+import time
+from random import randrange
 
 
 class Base:
@@ -292,26 +295,23 @@ class Base:
         Returns:
         None
         """
-        import turtle
-        import time
-        from random import randrange
         turtle.Screen().colormode(255)
-        for i in list_rectangles + list_squares:
-            t = turtle.Turtle()
-            t.color((randrange(255), randrange(255), randrange(255)))
-            t.pensize(1)
-            t.penup()
-            t.pendown()
-            t.setpos((i.x + t.pos()[0], i.y - t.pos()[1]))
-            t.pensize(10)
-            t.forward(i.width)
-            t.left(90)
-            t.forward(i.height)
-            t.left(90)
-            t.forward(i.width)
-            t.left(90)
-            t.forward(i.height)
-            t.left(90)
-            t.end_fill()
+        for j in list_rectangles + list_squares:
+            k = turtle.Turtle()
+            k.color((randrange(255), randrange(255), randrange(255)))
+            k.pensize(1)
+            k.penup()
+            k.pendown()
+            k.setpos((j.x + k.pos()[0], j.y - k.pos()[1]))
+            k.pensize(10)
+            k.forward(j.width)
+            k.left(90)
+            k.forward(j.height)
+            k.left(90)
+            k.forward(j.width)
+            k.left(90)
+            k.forward(j.height)
+            k.left(90)
+            k.end_fill()
 
         time.sleep(5)
