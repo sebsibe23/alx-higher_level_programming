@@ -39,12 +39,28 @@ class Rectangle(Base):
             id (int): The id of the rectangle.
             Default is None.
         '''
-        super().__init__(id)
         self.width = width
         self.height = height
         self.x = x
         self.y = y
+        super().__init__(id)
 
+    @property
+    def width(self):
+        """
+        Parameters:
+        self: An instance of the class.
+        Description: This function is a property getter for
+        the 'width' attribute of an instance of a class.
+        It retrieves the width of a rectangle instance.
+
+        Returns:
+        int: The width of the rectangle instance.
+        Width retriever.
+        """
+        return self.__width
+
+    @width.setter
     def width(self, value):
         '''
         This is a setter method for the 'width' attribute.
@@ -52,10 +68,11 @@ class Rectangle(Base):
         Args:
         value (int): The new value for the 'width' attribute.
         '''
-        if isinstance(value, int) and value >= 0:
-            self.__width = value
-        else:
-            raise ValueError("Width must be a non-negative integer.")
+        if not isinstance(value, int):
+            raise TypeError("width must be an integer")
+        if value <= 0:
+            raise ValueError("width must be > 0")
+        self.__width = value
 
     @property
     def height(self):
@@ -75,10 +92,11 @@ class Rectangle(Base):
         Parameters:
             value (int): The new height of the rectangle.
         '''
-        if isinstance(value, int) and value >= 0:
-            self.__height = value
-        else:
-            raise ValueError("height must be a non-negative integer.")
+        if not isinstance(value, int):
+            raise TypeError("height must be an integer")
+        if value <= 0:
+            raise ValueError("height must be > 0")
+        self.__height = value
 
     @property
     def x(self):
@@ -92,14 +110,19 @@ class Rectangle(Base):
 
     @x.setter
     def x(self, value):
-        '''
-        Setter for the x-coordinate of the rectangle.
+        """Property setter for x.
 
-        Parameters:
-            value (int): The new x-coordinate
-            of the rectangle.
-        '''
-        self.validate_integer("x", value)
+        Args:
+            value (int): x.
+
+        Raises:
+            TypeError: if x is not an integer.
+            ValueError: if x is less than or equal to zero.
+        """
+        if type(value) is not int:
+            raise TypeError("x must be an integer")
+        if value < 0:
+            raise ValueError("x must be >= 0")
         self.__x = value
 
     @property
@@ -121,7 +144,10 @@ class Rectangle(Base):
             value (int): The new y-coordinate
             of the rectangle.
         '''
-        self.validate_integer("y", value)
+        if type(value) is not int:
+            raise TypeError("y must be an integer")
+        if value < 0:
+            raise ValueError("y must be >= 0")
         self.__y = value
 
     def validate_integer(self, name, value, eq=True):
@@ -178,9 +204,9 @@ class Rectangle(Base):
             str: A string in the format
             '[Rectangle] (id) x/y - width/height'.
         '''
-        return '[{}] ({}) {}/{} - {}/{}'.\
-            format(type(self).__name__, self.id, self.x, self.y, self.width,
-                   self.height)
+        return ("[Rectangle] ({}) {:d}/{:d} - {:d}/{:d}".
+                format(self.id, self.__x, self.__y, self.__width,
+                       self.__height))
 
     def __update(self, **kwargs):
         '''
@@ -219,13 +245,11 @@ class Rectangle(Base):
             *args: Non-keyword arguments.
             **kwargs: Keyword arguments.
         '''
+        # print(args, kwargs)
         if args:
-            for attr, value in zip(attributes, args):
-                setattr(self, attr, value)
+            self.__update(*args)
         elif kwargs:
-            for attr, value in kwargs.items():
-                if hasattr(self, attr):
-                    setattr(self, attr, value)
+            self.__update(**kwargs)
 
     def to_dictionary(self):
         '''
