@@ -45,26 +45,17 @@ class Rectangle(Base):
         self.x = x
         self.y = y
 
-    @property
-    def width(self):
-        '''
-        Getter for the width of the rectangle.
-
-        Returns:
-            int: The width of the rectangle.
-        '''
-        return self.__width
-
-    @width.setter
     def width(self, value):
         '''
-        Setter for the width of the rectangle.
+        This is a setter method for the 'width' attribute.
 
-        Parameters:
-            value (int): The new width of the rectangle.
+        Args:
+        value (int): The new value for the 'width' attribute.
         '''
-        self.validate_integer("width", value, False)
-        self.__width = value
+        if isinstance(value, int) and value >= 0:
+            self.__width = value
+        else:
+            raise ValueError("Width must be a non-negative integer.")
 
     @property
     def height(self):
@@ -84,8 +75,10 @@ class Rectangle(Base):
         Parameters:
             value (int): The new height of the rectangle.
         '''
-        self.validate_integer("height", value, False)
-        self.__height = value
+        if isinstance(value, int) and value >= 0:
+            self.__height = value
+        else:
+            raise ValueError("height must be a non-negative integer.")
 
     @property
     def x(self):
@@ -136,31 +129,33 @@ class Rectangle(Base):
         Method for validating the value.
 
         Parameters:
-            name (str): The name of the attribute.
-            value (int): The value of the attribute.
-            eq (bool): A flag to determine if the
-            value can be equal to zero. Default is True.
+        name (str): The name of the attribute.
+        value (int): The value of the attribute.
+        eq (bool): A flag to determine if the
+        value can be equal to zero. Default is True.
 
         Raises:
-            TypeError: If the value is not an integer.
-            ValueError: If the value is less
-            than (or equal to, depending on eq) zero.
+        TypeError: If the value is not an integer.
+        ValueError: If the value is less
+        than (or equal to, depending on eq) zero.
         '''
-        if type(value) != int:
-            raise TypeError("{} must be an integer".format(name))
-        if eq and value < 0:
-            raise ValueError("{} must be >= 0".format(name))
-        elif not eq and value <= 0:
-            raise ValueError("{} must be > 0".format(name))
+        if not isinstance(value, int):
+            raise TypeError(f"{name} must be an integer")
+        if value <= 0 and not (eq and value == 0):
+            raise ValueError(f"{name} must be {'>' if not eq else '>='} 0")
 
     def area(self):
         '''
-        Computes the area of the rectangle.
+        This method calculates the area of the rectangle.
 
         Returns:
-            int: The area of the rectangle.
+        int: The area of the rectangle, calculated
+        as the product of its width and height.
         '''
-        return self.width * self.height
+        rarea = 0
+        for i in range(self.height):
+            rarea += self.width
+        return rarea
 
     def display(self):
         '''
@@ -187,32 +182,33 @@ class Rectangle(Base):
             format(type(self).__name__, self.id, self.x, self.y, self.width,
                    self.height)
 
-    def __update(self, id=None, width=None, height=None, x=None, y=None):
+    def __update(self, **kwargs):
         '''
-        Internal method that updates instance
-        attributes via */**args.
-
+        Function Name: __update
         Parameters:
-            id (int): The new id of the rectangle. Default is None.
-            width (int): The new width of the rectangle.
-            Default is None.
-            height (int): The new height of the rectangle.
-            Default is None.
-            x (int): The new x-coordinate of the rectangle.
-            Default is None.
-            y (int): The new y-coordinate of the rectangle.
-            Default is None.
+        self: The instance whose attributes are to be updated.
+        **kwargs: A variable number of keyword arguments. Each keyword
+        represents an attribute name and its value represents the new value
+        for that attribute. The possible attributes are:
+            id (int): The updated id of the rectangle.
+            If not provided, the id remains unchanged.
+            width (int): The updated width of the rectangle.
+            If not provided, the width remains unchanged.
+            height (int): The updated height of the rectangle.
+            If not provided, the height remains unchanged.
+            x (int): The updated x-coordinate of the rectangle.
+            If not provided, the x-coordinate remains unchanged.
+            y (int): The updated y-coordinate of the rectangle.
+            If not provided, the y-coordinate remains unchanged.
+        Description:
+        This is a private method intended for internal use within the class.
+        It updates the attributes of the instance based on the
+        provided keyword arguments. If a value for a specific
+        attribute is not provided, the attribute remains unchanged.
         '''
-        if id is not None:
-            self.id = id
-        if width is not None:
-            self.width = width
-        if height is not None:
-            self.height = height
-        if x is not None:
-            self.x = x
-        if y is not None:
-            self.y = y
+        for key, value in kwargs.items():
+            if value is not None:
+                setattr(self, key, value)
 
     def update(self, *args, **kwargs):
         '''
@@ -223,11 +219,13 @@ class Rectangle(Base):
             *args: Non-keyword arguments.
             **kwargs: Keyword arguments.
         '''
-        # print(args, kwargs)
         if args:
-            self.__update(*args)
+            for attr, value in zip(attributes, args):
+                setattr(self, attr, value)
         elif kwargs:
-            self.__update(**kwargs)
+            for attr, value in kwargs.items():
+                if hasattr(self, attr):
+                    setattr(self, attr, value)
 
     def to_dictionary(self):
         '''
@@ -238,5 +236,10 @@ class Rectangle(Base):
             "height", "x", and "y", and their corresponding
             values from the instance.
         '''
-        return {"id": self.id, "width": self.__width, "height": self.__height,
-                "x": self.__x, "y": self.__y}
+        vardict = {}
+        vardict["id"] = self.id
+        vardict["width"] = self.width
+        vardict["height"] = self.height
+        vardict["x"] = self.x
+        vardict["y"] = self.y
+        return (vardict)
