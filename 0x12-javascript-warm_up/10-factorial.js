@@ -5,6 +5,7 @@
 // It also handles the case when the number is 0 or NaN and returns 1.
 // For other positive numbers, it recursively calculates the
 // factorial by multiplying the number with the factorial of (n-1).
+
 function factorial(n) {
   if (n < 0) {
     return (-1);
