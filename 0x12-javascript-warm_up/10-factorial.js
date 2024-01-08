@@ -1,12 +1,15 @@
 #!/usr/bin/node
 
-// Function: factorial
-// Description: This function calculates the factorial of a given number.
-// It checks if the number is less than 0 and returns -1 in such cases.
-// It also handles the case when the number is 0 or NaN and returns 1.
-// For other positive numbers, it recursively calculatesi
-// the factorial by multiplying the number with the factorial of (n-1).
-function factorial(n) {
+/*
+ * This Node.js script defines a recursive function named 'factorial' that takes 
+ * a single parameter 'n'. If 'n' is less than 0, it returns -1. If 'n' is 0 or 
+ * not a number, it returns 1. Otherwise, it returns the product of 'n' and the 
+ * factorial of 'n-1'. The script then calls the 'factorial' function with the 
+ * first command-line argument (excluding the default ones) converted to a number 
+ * and prints the result.
+ */
+
+function factorial (n) {
   if (n < 0) {
     return (-1);
   }
@@ -16,7 +19,4 @@ function factorial(n) {
   return (n * factorial(n - 1));
 }
 
-// Output: Factorial
-// Description: This line logs the factorial of the numeric
-// value of process.argv[2] to the console.
 console.log(factorial(Number(process.argv[2])));
