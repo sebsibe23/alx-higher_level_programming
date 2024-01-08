@@ -1,13 +1,15 @@
 #!/usr/bin/node
+
 // Function: add
 // Description: This function takes two parameters,
 // a and b, and calculates their sum.
 // It assigns the sum to a variable called tot
 // and logs it to the console.
 function add(a, b) {
-	const tot = a + b;
-	console.log(tot);
+  const tot = a + b;
+  console.log(tot);
 }
+
 // Function Call: add
 // Description: This line calls the add function,
 // passing the numeric values of process.argv[2]
