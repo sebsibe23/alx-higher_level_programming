@@ -6,8 +6,8 @@
 // It assigns the sum to a variable called tot
 // and logs it to the console.
 function add(a, b) {
-  const tot = a + b;
-  console.log(tot);
+	const tot = a + b;
+	console.log(tot);
 }
 
 // Function Call: add
