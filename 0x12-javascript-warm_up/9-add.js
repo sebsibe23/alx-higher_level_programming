@@ -1,7 +1,7 @@
 #!/usr/bin/node
-function add(a, b) {
-    return Number(a) + Number(b);
+function add (a, b) {
+  const tot = a + b;
+  console.log(tot);
 }
 
-let args = process.argv.slice(2);
-console.log(add(args[0], args[1]));
+add(Number(process.argv[2]), Number(process.argv[3]));

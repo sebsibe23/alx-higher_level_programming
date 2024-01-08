@@ -1,10 +1,11 @@
 #!/usr/bin/node
-let args = process.argv.slice(2);
-let size = Number(args[0]);
-if (isNaN(size) || size < 1) {
-    console.log("Missing size");
+if (process.argv[2] === undefined || isNaN(process.argv[2])) {
+  console.log('Missing size');
 } else {
-    for (let i = 0; i < size; i++) {
-        console.log("X".repeat(size));
-    }
+  const x = Number(process.argv[2]);
+  let i = 0;
+  while (i < x) {
+    console.log('X'.repeat(x));
+    i++;
+  }
 }

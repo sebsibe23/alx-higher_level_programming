@@ -1,7 +1,12 @@
 #!/usr/bin/node
-function add(a, b) {
-    return Number(a) + Number(b);
+function factorial (n) {
+  if (n < 0) {
+    return (-1);
+  }
+  if (n === 0 || isNaN(n)) {
+    return (1);
+  }
+  return (n * factorial(n - 1));
 }
 
-let args = process.argv.slice(2);
-console.log(add(args[0], args[1]));
+console.log(factorial(Number(process.argv[2])));
