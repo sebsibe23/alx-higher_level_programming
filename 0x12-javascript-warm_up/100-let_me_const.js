@@ -1,2 +1,2 @@
 #!/usr/bin/node
-Var = 333;
+myVar = 333;
