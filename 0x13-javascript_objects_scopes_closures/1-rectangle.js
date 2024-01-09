@@ -6,12 +6,12 @@
 class Rectangle {
   /**
    * Create a new rectangle instance.
-   * @param {number} w - The width of the rectangle.
-   * @param {number} h - The height of the rectangle.
+   * @param {number} wth - The width of the rectangle.
+   * @param {number} hig - The height of the rectangle.
    */
-  constructor (w, h) {
-    this.width = w;
-    this.height = h;
+  constructor (wth, hig) {
+    this.width = wth;
+    this.height = hig;
   }
 }
 

@@ -6,13 +6,13 @@
 class Rectangle {
   /**
    * Create a new rectangle instance with positive width and height.
-   * @param {number} w - The width of the rectangle.
-   * @param {number} h - The height of the rectangle.
+   * @param {number} wth - The width of the rectangle.
+   * @param {number} hig - The height of the rectangle.
    */
-  constructor (w, h) {
-    if (w > 0 && h > 0) {
-      this.width = w;
-      this.height = h;
+  constructor (wth, hig) {
+    if (wth > 0 && hig > 0) {
+      this.width = wth;
+      this.height = hig;
     }
   }
 
@@ -20,9 +20,9 @@ class Rectangle {
    * Print a visual representation of the rectangle using 'X' characters.
    */
   print () {
-    for (let i = 0; i < this.height; i++) {
+    for (let x = 0; x < this.height; x++) {
       let s = '';
-      for (let j = 0; j < this.width; j++) {
+      for (let k = 0; k < this.width; k++) {
         s += 'X';
       }
       console.log(s);
