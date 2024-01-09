@@ -10,11 +10,11 @@
  * of the search element in the list.
  */
 exports.nbOccurences = function (list, searchElement) {
-  let nOccurrences = 0;
-  for (let i = 0; i < list.length; i++) {
-    if (searchElement === list[i]) {
-      nOccurrences++;
+  let varnOccurrences = 0;
+  for (let f = 0; f < list.length; f++) {
+    if (searchElement === list[f]) {
+      varnOccurrences++;
     }
   }
-  return nOccurrences;
+  return varnOccurrences;
 };

@@ -6,14 +6,14 @@
  * @returns {Array} - The reversed list.
  */
 exports.esrever = function (list) {
-  let len = list.length - 1;
-  let i = 0;
-  while ((len - i) > 0) {
-    const aux = list[len];
-    list[len] = list[i];
-    list[i] = aux;
-    i++;
-    len--;
+  let varlen = list.length - 1;
+  let j = 0;
+  while ((varlen - j) > 0) {
+    const aux = list[varlen];
+    list[varlen] = list[j];
+    list[j] = aux;
+    j++;
+    varlen--;
   }
   return list;
 };

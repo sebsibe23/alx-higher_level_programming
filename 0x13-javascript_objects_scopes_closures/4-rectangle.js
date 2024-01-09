@@ -5,9 +5,9 @@
  * It has a constructor and three methods:
  * print, rotate, and double.
  *
- * Constructor (w, h): Initializes a new Rectangle
- * object if both width (w) and
- * height (h) are positive numbers.
+ * Constructor (wt, hg): Initializes a new Rectangle
+ * object if both width (wt) and
+ * height (hg) are positive numbers.
  *
  * print(): Prints a visual representation of
  * the Rectangle object using 'X'
@@ -25,17 +25,17 @@
  */
 
 class Rectangle {
-  constructor (w, h) {
-    if ((w > 0) && (h > 0)) {
-      this.width = w;
-      this.height = h;
+  constructor (wt, hg) {
+    if ((wt > 0) && (hg > 0)) {
+      this.width = wt;
+      this.height = hg;
     }
   }
 
   print () {
-    for (let i = 0; i < this.height; i++) {
+    for (let t = 0; t < this.height; t++) {
       let s = '';
-      for (let j = 0; j < this.width; j++) {
+      for (let u = 0; u < this.width; u++) {
         s += 'X';
       }
       console.log(s);
