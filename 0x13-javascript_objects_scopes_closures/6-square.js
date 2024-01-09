@@ -14,7 +14,7 @@ class Square extends SquareP {
    * @param {string} [c='X'] - The character
    * to use for printing the square.
    */
-  charPrint(c) {
+  charPrint (c) {
     if (c === undefined) {
       c = 'X';
     }
