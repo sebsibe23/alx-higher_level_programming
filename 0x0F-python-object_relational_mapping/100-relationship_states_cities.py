@@ -28,11 +28,17 @@ if __name__ == '__main__':
     # Create the State "California"
     california = State(name='California')
 
-    # Create the City "San Francisco" and associate it with the State "California"
+    """
+    Create the City "San Francisco" and associate
+    it with the State "California"
+    """
     san_francisco = City(name='San Francisco')
     california.cities.append(san_francisco)
 
-    # Add the State and City objects to the session and commit the changes to the database
+    """
+    Add the State and City objects to the session
+    and commit the changes to the database
+    """
     session.add(california)
     session.add(san_francisco)
     session.commit()
