@@ -1,15 +1,17 @@
 #!/usr/bin/python3
 """Lists specific states from the 'hbtn_0e_0_usa' database.
 
-This script connects to a MySQL database and retrieves states from the 'states' table
-that match the provided name. The states are then printed one by one.
+This script connects to a MySQL database and
+retrieves states from the 'states' table
+that match the provided name.
+The states are then printed one by one.
 """
 
 import MySQLdb
 import sys
 
 
-def fetch_specific_states(host, user, passwd, db, port, state_name):
+def fetch_specific_states(host, user, passwd, db, port, match):
     """Fetches specific states from the database."""
     db = MySQLdb.connect(
         host=host,
@@ -20,8 +22,8 @@ def fetch_specific_states(host, user, passwd, db, port, state_name):
     )
     cur = db.cursor()
     cur.execute(
-        "SELECT * FROM states WHERE name LIKE BINARY '{}'"
-        .format(state_name)
+        "SELECT * FROM states WHERE name LIKE %s",
+        (match, )
     )
     rows = cur.fetchall()
     for row in rows:
@@ -36,6 +38,6 @@ if __name__ == "__main__":
     passwd = sys.argv[2]
     db = sys.argv[3]
     port = 3306
-    state_name = sys.argv[4]
+    match = sys.argv[4]
 
-    fetch_specific_states(host, user, passwd, db, port, state_name)
+    fetch_specific_states(host, user, passwd, db, port, match)
