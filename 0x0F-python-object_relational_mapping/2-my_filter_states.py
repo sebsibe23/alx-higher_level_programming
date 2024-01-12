@@ -1,7 +1,8 @@
 #!/usr/bin/python3
 """Lists specific states from the 'hbtn_0e_0_usa' database.
 
-This script connects to a MySQL database and retrieves states from the 'states' table
+This script connects to a MySQL database and
+retrieves states from the 'states' table
 that match the provided name. The states are then printed one by one.
 """
 
