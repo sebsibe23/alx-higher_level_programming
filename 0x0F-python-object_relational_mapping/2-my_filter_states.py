@@ -19,7 +19,7 @@ def fetch_specific_states(host, user, passwd, db, port, state_name):
     )
     cur = db.cursor()
     cur.execute(
-        "SELECT * FROM states WHERE name LIKE BINARY '{}' LIMIT 1"
+        "SELECT * FROM states WHERE name LIKE BINARY '{}'"
         .format(state_name)
     )
     rows = cur.fetchall()
