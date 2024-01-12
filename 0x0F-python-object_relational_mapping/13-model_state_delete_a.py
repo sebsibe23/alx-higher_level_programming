@@ -24,7 +24,7 @@ if __name__ == "__main__":
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    """ 
+    """
     Retrieve all State objects from the database
     that have a name containing the letter 'a'
     """
