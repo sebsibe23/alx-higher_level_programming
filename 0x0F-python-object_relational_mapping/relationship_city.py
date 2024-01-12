@@ -8,7 +8,8 @@ The City class represents a city entity in the database.
 Attributes:
     id (Column): The unique identifier of the city (Integer).
     name (Column): The name of the city (String, max length 128).
-    state_id (Column): The foreign key referencing the associated state (Integer).
+    state_id (Column): The foreign key referencing
+    the associated state (Integer).
 
 Table Name:
     cities
@@ -25,13 +26,15 @@ class City(Base):
     Class that defines each city.
 
     Args:
-        Base (DeclarativeMeta): The base class for declarative class definitions.
+        Base (DeclarativeMeta): The base class for declarative
+        class definitions.
 
     Attributes:
         __tablename__ (str): The name of the table in the database.
         id (Column): The unique identifier of the city (Integer).
         name (Column): The name of the city (String, max length 128).
-        state_id (Column): The foreign key referencing the associated state (Integer).
+        state_id (Column): The foreign key referencing the
+        associated state (Integer).
 
     """
     __tablename__ = 'cities'

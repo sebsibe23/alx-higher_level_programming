@@ -22,7 +22,7 @@ Object-Relational Mapping (ORM) library.
 
 Note: Before running the script, make
 sure the necessary SQLAlchemy models (State and City) and
-their relationships are defined in the 
+their relationships are defined in the
 'relationship_state.py' and 'relationship_city.py' files
 respectively. Also, ensure that the MySQL database
 is running and accessible.
