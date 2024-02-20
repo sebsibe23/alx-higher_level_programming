@@ -25,16 +25,17 @@
  * Dependencies:
  * - request module: Used to make HTTP requests to the Star Wars API.
  */
-const request = require('request')
-const movieId = process.argv[2]
-const apiUrl = `https://swapi-api.alx-tools.com/api/films/${movieId}`
-request.get(apiUrl, function (error, response, body) {
+const request = require('request');
+const movieId = process.argv[2];
+const apiURL = `https://swapi-api.alx-tools.com/api/films/${movieId}`;
+
+request.get(apiURL, function (error, response, body) {
   if (error) {
-    console.error(error)
+    console.error(error);
   } else if (response.statusCode === 200) {
-    const movie = JSON.parse(body)
-    console.log(movie.title)
+    const movie = JSON.parse(body);
+    console.log(movie.title);
   } else {
-    console.error(`Error: ${response.statusCode} - ${response.statusMessage}`)
+    console.error(`Error: ${response.statusCode} - ${response.statusMessage}`);
   }
-})
+});
