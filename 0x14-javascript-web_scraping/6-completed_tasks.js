@@ -1,5 +1,4 @@
 #!/usr/bin/node
-
 /**
  * Completed Tasks Counter
  * -----------------------
