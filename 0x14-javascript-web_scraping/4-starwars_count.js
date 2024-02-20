@@ -1,5 +1,4 @@
 #!/usr/bin/node
-
 /**
  * Star Wars Movie Count with Character
  * ------------------------------------
@@ -26,6 +25,7 @@
  * Dependencies:
   - request module: Used to make HTTP requests to the Star Wars API.
  **/
+
 const request = require('request')
 const starWarsUri = process.argv[2]
 let times = 0
