@@ -1,26 +1,12 @@
 #!/usr/bin/node
 
-const fs = require('fs')
+// Description: Node.js script to write data to a file specified by command-line arguments.
+// Parameters:
+//   - process.argv[2]: File name (command-line argument)
+//   - process.argv[3]: Data to be written to the file (command-line argument)
 
-const filePath = process.argv[2]
-const content = process.argv[3]
+const fs = require('fs');
 
-try {
-  if (!filePath) {
-    throw new TypeError('Error: File path is missing. Please provide a file path as a command line argument.')
-  }
-
-  if (!content) {
-    throw new TypeError('Error: Content is missing. Please provide content to write as a command line argument.')
-  }
-
-  fs.writeFile(filePath, content, (error) => {
-    if (error) {
-      throw error
-    } else {
-      console.log('Content has been written to the file successfully.')
-    }
-  })
-} catch (error) {
-  console.error(error)
-}
+fs.writeFile(process.argv[2], process.argv[3], error => {
+  if (error) console.log(error);
+});
