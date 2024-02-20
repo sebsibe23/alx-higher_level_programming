@@ -1,4 +1,5 @@
 #!/usr/bin/node
+
 /**
  * Star Wars Movie Characters
  * --------------------------
@@ -24,39 +25,43 @@
  * API Used:
  * - Star Wars API (https://swapi.dev/)
  */
-const request = require('request')
-const movieId = process.argv[2]
-const apiUrl = `https://swapi.dev/api/films/${movieId}`
+
+const request = require('request');
+
+const movieId = process.argv[2];
+const apiUrl = `https://swapi.dev/api/films/${movieId}`;
+
 request(apiUrl, function (error, response, body) {
   if (error) {
-    console.error(error)
+    console.error(error);
   } else if (response.statusCode === 200) {
-    const movie = JSON.parse(body)
-    const characters = movie.characters
+    const movie = JSON.parse(body);
+    const characters = movie.characters;
     const characterRequests = characters.map((characterUrl) => {
       return new Promise((resolve, reject) => {
         request(characterUrl, function (error, response, body) {
           if (error) {
-            reject(error)
+            reject(error);
           } else if (response.statusCode === 200) {
-            const character = JSON.parse(body)
-            resolve(character.name)
+            const character = JSON.parse(body);
+            resolve(character.name);
           } else {
-            reject(new Error(`Error: ${response.statusCode} - ${response.statusMessage}`))
+            reject(new Error(`Error: ${response.statusCode} - ${response.statusMessage}`));
           }
-        })
-      })
-    })
+        });
+      });
+    });
+
     Promise.all(characterRequests)
       .then((characterNames) => {
         characterNames.forEach((characterName) => {
-          console.log(characterName)
-        })
+          console.log(characterName);
+        });
       })
       .catch((error) => {
-        console.error(error)
-      })
+        console.error(error);
+      });
   } else {
-    console.error(new Error(`Error: ${response.statusCode} - ${response.statusMessage}`))
+    console.error(new Error(`Error: ${response.statusCode} - ${response.statusMessage}`));
   }
-})
+});
