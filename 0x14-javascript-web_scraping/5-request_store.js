@@ -1,5 +1,4 @@
 #!/usr/bin/node
-
 /**
  * Web Page Downloader
  * -------------------
@@ -22,25 +21,13 @@
  * - fs module: Used to write the web page contents to a file.
  */
 
-const request = require('request')
-const fs = require('fs')
+const request = require('request');
+const fs = require('fs');
 
-// Retrieve the URL and file path from command line arguments
-const url = process.argv[2]
-const filePath = process.argv[3]
-
-// Send a GET request to the specified URL
-request(url, function (error, response, body) {
-  if (error) {
-    console.error(error)
-  } else {
-    // Write the response body (web page contents) to the specified file path
-    fs.writeFile(filePath, body, 'utf8', function (err) {
-      if (err) {
-        console.error(err)
-      } else {
-        console.log(`Web page downloaded and saved to: ${filePath}`)
-      }
-    })
-  }
-})
+request(process.argv[2], function (_err, _res, body) {
+  fs.writeFile(process.argv[3], body, 'utf8', function (err) {
+    if (err) {
+      console.log(err);
+    }
+  });
+});
