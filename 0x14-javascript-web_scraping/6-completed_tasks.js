@@ -19,37 +19,38 @@
  * Dependencies:
  * - request module: Used to send HTTP requests and retrieve the data.
  */
-
-const request = require('request')
+const request = require('request');
 
 // Retrieve the URL from the command line argument
-const url = process.argv[2]
+const url = process.argv[2];
 
 // Send a GET request to the specified URL
 request(url, function (err, _res, body) {
   if (err) {
-    console.error(err)
+    console.error(err);
   } else {
     // Initialize an object to store the completed task count for each user
-    const completedTasksByUsers = {}
+    const completedTasksByUser = {};
 
     // Parse the response body as JSON
-    body = JSON.parse(body)
+    body = JSON.parse(body);
 
     // Iterate over the data
     for (let i = 0; i < body.length; ++i) {
-      const userId = body[i].userId
-      const completed = body[i].completed
+      const userId = body[i].userId;
+      const completed = body[i].completed;
 
-      // If the task is completed and the user is not already in the completedTasksByUsers object, initialize the count to 0
-      if (completed && !completedTasksByUsers[userId]) {
-        completedTasksByUsers[userId] = 0
+      // If the task is completed and the user is not already in the completedTasksByUser object, initialize the count to 0
+      if (completed && !completedTasksByUser[userId]) {
+        completedTasksByUser[userId] = 0;
       }
 
       // If the task is completed, increment the count for the respective user
-      if (completed) ++completedTasksByUsers[userId]
+      if (completed) {
+        ++completedTasksByUser[userId];
+      }
     }
 
-    console.log(completedTasksByUsers)
+    console.log(completedTasksByUser);
   }
-})
+});
