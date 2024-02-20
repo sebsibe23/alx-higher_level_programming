@@ -24,38 +24,38 @@
  * - Star Wars API (https://swapi.dev/)
  */
 
-const request = require('request')
+const request = require('request');
 
 // Retrieve the movie ID from the command line argument
-const movieId = process.argv[2]
+const movieId = process.argv[2];
 
 // Construct the API URL based on the movie ID
-const apiUrl = `https://swapi.dev/api/films/${movieId}`
+const movieUrl = `https://swapi.dev/api/films/${movieId}`;
 
 // Send a GET request to the Star Wars API to fetch the movie details
-request(apiUrl, function (error, response, body) {
+request(movieUrl, function (error, response, body) {
   if (error) {
-    console.error(error)
+    console.error(`Error occurred while fetching movie details: ${error}`);
   } else if (response.statusCode === 200) {
     // Parse the response body as JSON
-    const movie = JSON.parse(body)
-    const characters = movie.characters
+    const movie = JSON.parse(body);
+    const characters = movie.characters;
 
     // Iterate over the character URLs and send separate GET requests for each character
     characters.forEach((characterUrl) => {
       request(characterUrl, function (error, response, body) {
         if (error) {
-          console.error(error)
+          console.error(`Error occurred while fetching character details: ${error}`);
         } else if (response.statusCode === 200) {
           // Parse the response body as JSON
-          const character = JSON.parse(body)
-          console.log(character.name)
+          const character = JSON.parse(body);
+          console.log(character.name);
         } else {
-          console.error(`Error: ${response.statusCode} - ${response.statusMessage}`)
+          console.error(`Error: ${response.statusCode} - ${response.statusMessage}`);
         }
-      })
-    })
+      });
+    });
   } else {
-    console.error(`Error: ${response.statusCode} - ${response.statusMessage}`)
+    console.error(`Error: ${response.statusCode} - ${response.statusMessage}`);
   }
-})
+});
