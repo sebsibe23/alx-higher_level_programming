@@ -1,5 +1,4 @@
 #!/usr/bin/node
-
 /**
  * Star Wars Movie Characters
  * --------------------------
@@ -25,33 +24,21 @@
  * API Used:
  * - Star Wars API (https://swapi.dev/)
  */
-
 const request = require('request')
-
-// Retrieve the movie ID from the command line argument
 const movieId = process.argv[2]
-
-// Construct the API URL based on the movie ID
 const apiUrl = `https://swapi.dev/api/films/${movieId}`
-
-// Send a GET request to the Star Wars API to fetch the movie details
 request(apiUrl, function (error, response, body) {
   if (error) {
     console.error(error)
   } else if (response.statusCode === 200) {
-    // Parse the response body as JSON
     const movie = JSON.parse(body)
     const characters = movie.characters
-
-    // Create an array of promises for each character request
     const characterRequests = characters.map((characterUrl) => {
       return new Promise((resolve, reject) => {
-        // Send a GET request to retrieve each character's details
         request(characterUrl, function (error, response, body) {
           if (error) {
             reject(error)
           } else if (response.statusCode === 200) {
-            // Parse the response body as JSON
             const character = JSON.parse(body)
             resolve(character.name)
           } else {
@@ -60,11 +47,8 @@ request(apiUrl, function (error, response, body) {
         })
       })
     })
-
-    // Wait for all character requests to complete
     Promise.all(characterRequests)
       .then((characterNames) => {
-        // Print the names of the characters in the same order as the `characters` list
         characterNames.forEach((characterName) => {
           console.log(characterName)
         })
