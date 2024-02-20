@@ -7,7 +7,7 @@
  * Description: This script retrieves the number of movies where the character
  *              "Wedge Antilles" is present based on the Star Wars API.
  *
- * Author: John Doe
+ * Author: sebsibe solomon
  *
  * Date: February 20, 2024
  *

@@ -7,7 +7,7 @@
  * Description: This script retrieves data from a specified URL and counts the number of completed tasks
  *              for each user.
  *
- * Author: John Doe
+ * Author: sebsibe solomon
  *
  * Date: February 20, 2024
  *

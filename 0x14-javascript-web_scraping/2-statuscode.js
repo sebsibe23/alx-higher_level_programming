@@ -7,7 +7,7 @@
  * Description: This script fetches and displays the title of a Star Wars film
  *              based on the film ID provided by the user.
  *
- * Author: John Doe
+ * Author: sebsibe solomon
  *
  * Date: February 20, 2024
  *

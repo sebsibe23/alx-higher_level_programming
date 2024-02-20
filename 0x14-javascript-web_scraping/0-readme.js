@@ -1,5 +1,4 @@
 #!/usr/bin/node
-
 /**
  * File Reader
  * ------------
@@ -7,7 +6,7 @@
  * Description: This script reads a file and
  * outputs its contents to the console.
  *
- * Author: John Doe
+ * Author: sebsibe solomon
  *
  * Date: February 20, 2024
  *

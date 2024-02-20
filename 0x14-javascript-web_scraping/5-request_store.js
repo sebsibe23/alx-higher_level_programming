@@ -7,7 +7,7 @@
  * Description: This script downloads the contents of a web page specified by the URL and
  *              saves it to a file specified by the file path.
  *
- * Author: John Doe
+ * Author: sebsibe solomon
  *
  * Date: February 20, 2024
  *
