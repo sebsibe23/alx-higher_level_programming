@@ -1,5 +1,4 @@
 #!/usr/bin/node
-
 /**
  * Star Wars Movie Title Fetcher
  * -----------------------------
